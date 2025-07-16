@@ -1,420 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Our Services Carousel</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Our Services</title>
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Arial", sans-serif;
-      }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-      body {
-        background-color: #f8f9fa;
-        color: #333;
-        line-height: 1.6;
-      }
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-      .services-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 40px 20px;
-      }
+        .services-container {
+            width: 100%;
+            padding: 30px 15px;
+        }
 
-      .services-header {
-        text-align: center;
-        margin-bottom: 40px;
-      }
+        .services-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-      .services-header h1 {
-        font-size: 2.5rem;
-        margin-bottom: 15px;
-        color: #2c3e50;
-      }
-
-      .services-header p {
-        font-size: 1.2rem;
-        color: #7f8c8d;
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* Desktop Grid View */
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-      }
-
-      .service-card {
-        background: white;
-        border-radius: 10px;
-        padding: 30px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .service-card h2 {
-        font-size: 1.5rem;
-        margin-bottom: 15px;
-        color: #3498db;
-        position: relative;
-        padding-bottom: 10px;
-      }
-
-      .service-card h2::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 50px;
-        height: 3px;
-        background-color: #3498db;
-      }
-
-      .service-card p {
-        color: #666;
-        font-size: 1rem;
-      }
-
-      hr {
-        border: 0;
-        height: 1px;
-        background-image: linear-gradient(
-          to right,
-          rgba(0, 0, 0, 0),
-          rgba(0, 0, 0, 0.1),
-          rgba(0, 0, 0, 0)
-        );
-        margin: 20px 0;
-      }
-
-      /* Mobile Carousel View */
-      .services-carousel {
-        display: none;
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-      }
-
-      .carousel-track {
-        display: flex;
-        transition: transform 0.5s ease;
-      }
-
-      .carousel-slide {
-        min-width: 50%; /* Show two cards at a time */
-        padding: 0 10px;
-        box-sizing: border-box;
-      }
-
-      .carousel-nav {
-        display: flex;
-        justify-content: center;
-        margin-top: 20px;
-      }
-
-      .carousel-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        background-color: #ccc;
-        margin: 0 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-      }
-
-      .carousel-dot.active {
-        background-color: #3498db;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
         .services-header h1 {
-          font-size: 2rem;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
         }
 
         .services-header p {
-          font-size: 1rem;
-        }
-
-        .services-grid {
-          display: none;
+            font-size: 1rem;
+            color: #7f8c8d;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 15px;
         }
 
         .services-carousel {
-          display: block;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 50%;
+            padding: 0 8px;
+            box-sizing: border-box;
         }
 
         .service-card {
-          padding: 20px;
-          height: 100%;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .carousel-slide {
-          min-width: 50%; /* Still show two cards even on very small screens */
-          padding: 0 5px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            height: 100%;
         }
 
         .service-card h2 {
-          font-size: 1.3rem;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            color: #3498db;
+            position: relative;
+            padding-bottom: 8px;
         }
-      }
+
+        .service-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background-color: #3498db;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: #3498db;
+        }
+
+        /* Disable horizontal scroll on touch devices */
+        body {
+            touch-action: pan-y;
+            overscroll-behavior-y: contain;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <div class="services-container">
-      <div class="services-header">
-        <h1>Our Services</h1>
-        <p>Save Time Managing Your Business With Our Best Services</p>
-      </div>
-
-      <!-- Desktop Grid View -->
-      <div class="services-grid">
-        <div class="service-card">
-          <h2>Funnel & Automation</h2>
-          <p>
-            High-converting funnels paired with automated follow-ups, reminders,
-            and onboarding. Leads.
-          </p>
+        <div class="services-header">
+            <h1>Our Services</h1>
+            <p>Save Time Managing Your Business With Our Best Services</p>
         </div>
-
-        <div class="service-card">
-          <h2>CRM setup</h2>
-          <p>
-            Organize your leads, track activity, and finally get a system that
-            makes your sales and support easier.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <h2>AI agents</h2>
-          <p>
-            Always-on chat and email assistants that follow up, respond, and
-            book appointments for you.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <h2>Reporting dashboards</h2>
-          <p>
-            Clear; simple dashboards that show what's working, what's not, and
-            how your automation is impacting.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <h2>IVR routing</h2>
-          <p>
-            Smart phone systems that greet and route your callers to the right
-            place without needing you to answer.
-          </p>
-        </div>
-
-        <div class="service-card">
-          <h2>Unlimited support</h2>
-          <p>
-            Real responses. Fast turnarounds. No ticket queues. You'll always
-            know someone has your back.
-          </p>
-        </div>
-      </div>
-
-      <!-- Mobile Carousel View -->
-      <div class="services-carousel">
-        <div class="carousel-track">
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>Funnel & Automation</h2>
-              <p>
-                High-converting funnels paired with automated follow-ups,
-                reminders, and onboarding. Leads.
-              </p>
+        
+        <div class="services-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Funnel & Automation</h2>
+                        <p>High-converting funnels paired with automated follow-ups, reminders, and onboarding. Leads.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>CRM setup</h2>
+                        <p>Organize your leads, track activity, and finally get a system that makes your sales and support easier.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>AI agents</h2>
+                        <p>Always-on chat and email assistants that follow up, respond, and book appointments for you.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Reporting dashboards</h2>
+                        <p>Clear; simple dashboards that show what's working, what's not, and how your automation is impacting.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>IVR routing</h2>
+                        <p>Smart phone systems that greet and route your callers to the right place without needing you to answer.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Unlimited support</h2>
+                        <p>Real responses. Fast turnarounds. No ticket queues. You'll always know someone has your back.</p>
+                    </div>
+                </div>
             </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>CRM setup</h2>
-              <p>
-                Organize your leads, track activity, and finally get a system
-                that makes your sales and support easier.
-              </p>
+            
+            <div class="carousel-nav">
+                <div class="carousel-dot active" data-index="0"></div>
+                <div class="carousel-dot" data-index="1"></div>
+                <div class="carousel-dot" data-index="2"></div>
             </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>AI agents</h2>
-              <p>
-                Always-on chat and email assistants that follow up, respond, and
-                book appointments for you.
-              </p>
-            </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>Reporting dashboards</h2>
-              <p>
-                Clear; simple dashboards that show what's working, what's not,
-                and how your automation is impacting.
-              </p>
-            </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>IVR routing</h2>
-              <p>
-                Smart phone systems that greet and route your callers to the
-                right place without needing you to answer.
-              </p>
-            </div>
-          </div>
-
-          <div class="carousel-slide">
-            <div class="service-card">
-              <h2>Unlimited support</h2>
-              <p>
-                Real responses. Fast turnarounds. No ticket queues. You'll
-                always know someone has your back.
-              </p>
-            </div>
-          </div>
         </div>
-
-        <div class="carousel-nav">
-          <div class="carousel-dot active" data-index="0"></div>
-          <div class="carousel-dot" data-index="1"></div>
-          <div class="carousel-dot" data-index="2"></div>
-        </div>
-      </div>
     </div>
 
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Mobile Carousel Functionality
-        const carouselTrack = document.querySelector(".carousel-track");
-        const slides = document.querySelectorAll(".carousel-slide");
-        const dots = document.querySelectorAll(".carousel-dot");
+        // Security: Disable right-click and developer tools
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || 
+                (e.ctrlKey && e.shiftKey && e.key === 'I') || 
+                (e.ctrlKey && e.shiftKey && e.key === 'J') || 
+                (e.ctrlKey && e.key === 'U') ||
+                (e.metaKey && e.altKey && e.key === 'I') || // Mac
+                (e.metaKey && e.altKey && e.key === 'J')) { // Mac
+                e.preventDefault();
+                alert('Developer tools are disabled on this page');
+            }
+        });
+
+        // Carousel functionality
+        const carouselTrack = document.querySelector('.carousel-track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
         let currentIndex = 0;
-        const slidesToShow = 2; // Show two cards at a time
+        const slidesToShow = 2;
         const slideCount = slides.length;
         const totalGroups = Math.ceil(slideCount / slidesToShow);
-
+        
         // Set up touch events for swiping
         let touchStartX = 0;
         let touchEndX = 0;
-
-        carouselTrack.addEventListener(
-          "touchstart",
-          (e) => {
+        
+        carouselTrack.addEventListener('touchstart', (e) => {
             touchStartX = e.changedTouches[0].screenX;
-          },
-          { passive: true }
-        );
-
-        carouselTrack.addEventListener(
-          "touchend",
-          (e) => {
+        }, {passive: true});
+        
+        carouselTrack.addEventListener('touchend', (e) => {
             touchEndX = e.changedTouches[0].screenX;
             handleSwipe();
-          },
-          { passive: true }
-        );
-
+        }, {passive: true});
+        
         function handleSwipe() {
-          if (touchEndX < touchStartX - 50) {
-            // Swipe left - next group
-            goToSlide(currentIndex + 1);
-          } else if (touchEndX > touchStartX + 50) {
-            // Swipe right - previous group
-            goToSlide(currentIndex - 1);
-          }
+            if (touchEndX < touchStartX - 30) {
+                goToSlide(currentIndex + 1);
+            } else if (touchEndX > touchStartX + 30) {
+                goToSlide(currentIndex - 1);
+            }
         }
-
+        
         // Dot navigation
-        dots.forEach((dot) => {
-          dot.addEventListener("click", function () {
-            const slideIndex = parseInt(this.getAttribute("data-index"));
-            goToSlide(slideIndex);
-          });
+        dots.forEach(dot => {
+            dot.addEventListener('click', function() {
+                const slideIndex = parseInt(this.getAttribute('data-index'));
+                goToSlide(slideIndex);
+            });
         });
-
-        // Auto-advance carousel (optional)
+        
+        // Auto-advance carousel
         let autoSlideInterval = setInterval(() => {
-          goToSlide(currentIndex + 1);
-        }, 5000);
-
-        // Reset auto-slide timer when user interacts
-        function resetAutoSlide() {
-          clearInterval(autoSlideInterval);
-          autoSlideInterval = setInterval(() => {
             goToSlide(currentIndex + 1);
-          }, 5000);
-        }
-
+        }, 4000);
+        
         function goToSlide(index) {
-          // Wrap around if at beginning or end
-          if (index >= totalGroups) {
-            index = 0;
-          } else if (index < 0) {
-            index = totalGroups - 1;
-          }
-
-          // Update carousel position
-          const translateValue = -(index * 100);
-          carouselTrack.style.transform = `translateX(${translateValue}%)`;
-          currentIndex = index;
-
-          // Update active dot
-          dots.forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-          });
-
-          resetAutoSlide();
-        }
-
-        // Pause auto-slide on hover (for devices with mouse)
-        if (window.matchMedia("(hover: hover)").matches) {
-          carouselTrack.addEventListener("mouseenter", () => {
+            if (index >= totalGroups) {
+                index = 0;
+            } else if (index < 0) {
+                index = totalGroups - 1;
+            }
+            
+            carouselTrack.style.transform = `translateX(-${index * 100}%)`;
+            currentIndex = index;
+            
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === index);
+            });
+            
+            // Reset auto-slide timer
             clearInterval(autoSlideInterval);
-          });
-
-          carouselTrack.addEventListener("mouseleave", () => {
-            resetAutoSlide();
-          });
+            autoSlideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 4000);
         }
-
-        // Initialize carousel to show first two cards
+        
+        // Initial positioning
         goToSlide(0);
-      });
-      /*Meka mage site ek */
 
-      document.addEventListener("contextmenu", (e) => e.preventDefault()); // Disable right-click
-
-      document.addEventListener("keydown", (e) => {
-        if (e.ctrlKey && (e.key === "u" || e.key === "U")) {
-          e.preventDefault(); // Prevent Ctrl+U (View Source)
-        }
-        if (e.ctrlKey && (e.key === "s" || e.key === "S")) {
-          e.preventDefault(); // Prevent Ctrl+S (Save Page)
-        }
-        if (e.ctrlKey && e.shiftKey && (e.key === "i" || e.key === "I")) {
-          e.preventDefault(); // Prevent Ctrl+Shift+I (DevTools)
-        }
-      });
+        // Prevent zooming on mobile
+        document.addEventListener('gesturestart', function(e) {
+            e.preventDefault();
+        });
     </script>
-  </body>
+</body>
 </html>
