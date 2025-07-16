@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services Carousel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .services-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .services-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+
+        .services-header p {
+            font-size: 1.2rem;
+            color: #7f8c8d;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Desktop Grid View */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #3498db;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .service-card h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #3498db;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+            margin: 20px 0;
+        }
+
+        /* Mobile Carousel View */
+        .services-carousel {
+            display: none;
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-slide {
+            min-width: 50%; /* Show two cards at a time */
+            padding: 0 10px;
+            box-sizing: border-box;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background-color: #3498db;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .services-header h1 {
+                font-size: 2rem;
+            }
+
+            .services-header p {
+                font-size: 1rem;
+            }
+
+            .services-grid {
+                display: none;
+            }
+
+            .services-carousel {
+                display: block;
+            }
+
+            .service-card {
+                padding: 20px;
+                height: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-slide {
+                min-width: 50%; /* Still show two cards even on very small screens */
+                padding: 0 5px;
+            }
+
+            .service-card h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="services-container">
+        <div class="services-header">
+            <h1>Our Services</h1>
+            <p>Save Time Managing Your Business With Our Best Services</p>
+        </div>
+        
+        <!-- Desktop Grid View -->
+        <div class="services-grid">
+            <div class="service-card">
+                <h2>Funnel & Automation</h2>
+                <p>High-converting funnels paired with automated follow-ups, reminders, and onboarding. Leads.</p>
+            </div>
+            
+            <div class="service-card">
+                <h2>CRM setup</h2>
+                <p>Organize your leads, track activity, and finally get a system that makes your sales and support easier.</p>
+            </div>
+            
+            <div class="service-card">
+                <h2>AI agents</h2>
+                <p>Always-on chat and email assistants that follow up, respond, and book appointments for you.</p>
+            </div>
+            
+            <div class="service-card">
+                <h2>Reporting dashboards</h2>
+                <p>Clear; simple dashboards that show what's working, what's not, and how your automation is impacting.</p>
+            </div>
+            
+            <div class="service-card">
+                <h2>IVR routing</h2>
+                <p>Smart phone systems that greet and route your callers to the right place without needing you to answer.</p>
+            </div>
+            
+            <div class="service-card">
+                <h2>Unlimited support</h2>
+                <p>Real responses. Fast turnarounds. No ticket queues. You'll always know someone has your back.</p>
+            </div>
+        </div>
+        
+        <!-- Mobile Carousel View -->
+        <div class="services-carousel">
+            <div class="carousel-track">
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Funnel & Automation</h2>
+                        <p>High-converting funnels paired with automated follow-ups, reminders, and onboarding. Leads.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>CRM setup</h2>
+                        <p>Organize your leads, track activity, and finally get a system that makes your sales and support easier.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>AI agents</h2>
+                        <p>Always-on chat and email assistants that follow up, respond, and book appointments for you.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Reporting dashboards</h2>
+                        <p>Clear; simple dashboards that show what's working, what's not, and how your automation is impacting.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>IVR routing</h2>
+                        <p>Smart phone systems that greet and route your callers to the right place without needing you to answer.</p>
+                    </div>
+                </div>
+                
+                <div class="carousel-slide">
+                    <div class="service-card">
+                        <h2>Unlimited support</h2>
+                        <p>Real responses. Fast turnarounds. No ticket queues. You'll always know someone has your back.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="carousel-nav">
+                <div class="carousel-dot active" data-index="0"></div>
+                <div class="carousel-dot" data-index="1"></div>
+                <div class="carousel-dot" data-index="2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Carousel Functionality
+            const carouselTrack = document.querySelector('.carousel-track');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const dots = document.querySelectorAll('.carousel-dot');
+            let currentIndex = 0;
+            const slidesToShow = 2; // Show two cards at a time
+            const slideCount = slides.length;
+            const totalGroups = Math.ceil(slideCount / slidesToShow);
+            
+            // Set up touch events for swiping
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            carouselTrack.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {passive: true});
+            
+            carouselTrack.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {passive: true});
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    // Swipe left - next group
+                    goToSlide(currentIndex + 1);
+                } else if (touchEndX > touchStartX + 50) {
+                    // Swipe right - previous group
+                    goToSlide(currentIndex - 1);
+                }
+            }
+            
+            // Dot navigation
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-index'));
+                    goToSlide(slideIndex);
+                });
+            });
+            
+            // Auto-advance carousel (optional)
+            let autoSlideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000);
+            
+            // Reset auto-slide timer when user interacts
+            function resetAutoSlide() {
+                clearInterval(autoSlideInterval);
+                autoSlideInterval = setInterval(() => {
+                    goToSlide(currentIndex + 1);
+                }, 5000);
+            }
+            
+            function goToSlide(index) {
+                // Wrap around if at beginning or end
+                if (index >= totalGroups) {
+                    index = 0;
+                } else if (index < 0) {
+                    index = totalGroups - 1;
+                }
+                
+                // Update carousel position
+                const translateValue = -(index * 100);
+                carouselTrack.style.transform = `translateX(${translateValue}%)`;
+                currentIndex = index;
+                
+                // Update active dot
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                resetAutoSlide();
+            }
+            
+            // Pause auto-slide on hover (for devices with mouse)
+            if (window.matchMedia("(hover: hover)").matches) {
+                carouselTrack.addEventListener('mouseenter', () => {
+                    clearInterval(autoSlideInterval);
+                });
+                
+                carouselTrack.addEventListener('mouseleave', () => {
+                    resetAutoSlide();
+                });
+            }
+            
+            // Initialize carousel to show first two cards
+            goToSlide(0);
+        });
+    </script>
+</body>
+</html>
